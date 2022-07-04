@@ -1,4 +1,4 @@
-# MFA_ExampleProject
+# Unreal Engine Project: MFA_ExampleProject
 
 ![image](https://user-images.githubusercontent.com/77353979/177180834-62a1b78d-ea23-4301-bb8d-ec4953c3d230.png)
 
