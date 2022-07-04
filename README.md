@@ -1,5 +1,7 @@
 # MFA_ExampleProject
 
+![image](https://user-images.githubusercontent.com/77353979/177180834-62a1b78d-ea23-4301-bb8d-ec4953c3d230.png)
+
 A simple example project for the [Modular Features Extra Actions plugin](https://github.com/lucoiso/UEModularFeatures_ExtraActions).
 
 ## Links:
