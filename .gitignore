@@ -1,9 +1,14 @@
+Build
 Binaries
 DerivedDataCache
 Intermediate
 Saved
+Plugins/Developer/RiderLink
+Plugins/UEModularFeatures_ExtraActions
+enc_temp_folder
 .vscode
 .vs
+.idea
 *.VC.db
 *.opensdf
 *.opendb
@@ -12,3 +17,5 @@ Saved
 *.suo
 *.xcodeproj
 *.xcworkspace
+*.ipch
+*.TMP

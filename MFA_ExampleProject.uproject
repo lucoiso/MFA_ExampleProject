@@ -59,6 +59,10 @@
 		{
 			"Name": "MFA_Abilities",
 			"Enabled": true
+		},
+		{
+			"Name": "MFA_ActorSpawning",
+			"Enabled": true
 		}
 	]
 }

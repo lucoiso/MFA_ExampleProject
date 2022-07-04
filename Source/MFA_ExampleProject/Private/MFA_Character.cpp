@@ -19,7 +19,7 @@ AMFA_Character::AMFA_Character()
 	PrimaryActorTick.bStartWithTickEnabled = false;
 
 #pragma region Default ACharacter properties
-	GetCapsuleComponent()->InitCapsuleSize(35.f, 90.0f);
+	GetCapsuleComponent()->InitCapsuleSize(50.f, 50.0f);
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
