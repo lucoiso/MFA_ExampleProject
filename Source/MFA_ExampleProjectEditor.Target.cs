@@ -1,6 +1,6 @@
 // Author: Lucas Vilas-Boas
 // Year: 2022
-// Repo: https://github.com/lucoiso/UEModularFeatures_ExtraActions
+// Repo: https://github.com/lucoiso/MFA_ExampleProject
 
 using UnrealBuildTool;
 
