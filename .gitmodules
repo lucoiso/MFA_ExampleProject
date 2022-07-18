@@ -1,0 +1,3 @@
+[submodule "Plugins/UEModularFeatures_ExtraActions"]
+	path = Plugins/UEModularFeatures_ExtraActions
+	url = https://github.com/lucoiso/UEModularFeatures_ExtraActions.git
