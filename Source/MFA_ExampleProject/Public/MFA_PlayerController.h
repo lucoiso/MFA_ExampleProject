@@ -25,13 +25,11 @@ public:
 
 	/* This function came from IAbilityInputBinding interface,
 	 * provided by GameFeatures_ExtraActions plugin to manage ability bindings */
-	UFUNCTION()
-	virtual void SetupAbilityInputBinding_Implementation(UInputAction* Action, const int32 InputID) override;
+	virtual void SetupAbilityBindingByInput_Implementation(UInputAction* Action, const int32 InputID) override;
 
 	/* This function came from IAbilityInputBinding interface,
 	 * provided by GameFeatures_ExtraActions plugin to manage ability bindings */
-	UFUNCTION()
-	virtual void RemoveAbilityInputBinding_Implementation(const UInputAction* Action) const override;
+	virtual void RemoveAbilityInputBinding_Implementation(const UInputAction* Action) override;
 
 private:
 	// FAbilityInputData is a custom private struct to handle the bindings of the input to the ability
@@ -47,15 +45,6 @@ private:
 
 	// A map to store the ability input bindings
 	TMap<UInputAction*, FAbilityInputData> AbilityActionBindings;
-
-#pragma region Default Movimentation Functions
-	UFUNCTION()
-	void ChangeCameraAxis(const FInputActionValue& Value);
-	UFUNCTION()
-	void Move(const FInputActionValue& Value) const;
-	UFUNCTION()
-	void Jump(const FInputActionValue& Value) const;
-#pragma endregion Default Movimentation Functions
 
 	// Function to manage the input bindings of the added abilities when a key is pressed
 	void OnAbilityInputPressed(UInputAction* Action) const;
