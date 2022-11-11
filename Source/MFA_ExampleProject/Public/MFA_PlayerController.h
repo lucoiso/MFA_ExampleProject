@@ -23,9 +23,12 @@ public:
 	// Constructor: Sets default values for this controller's properties
 	AMFA_PlayerController();
 
-	/* This function came from IAbilityInputBinding interface,
+	/* These functions came from IAbilityInputBinding interface,
 	 * provided by GameFeatures_ExtraActions plugin to manage ability bindings */
 	virtual void SetupAbilityBindingByInput_Implementation(UInputAction* Action, const int32 InputID) override;
+	virtual void SetupAbilityBindingBySpec_Implementation(UInputAction* Action, const FGameplayAbilitySpec& AbilitySpec) override;
+	virtual void SetupAbilityBindingByTags_Implementation(UInputAction* Action, const FGameplayTagContainer& AbilityTags) override;
+	virtual void SetupAbilityBindingByClass_Implementation(UInputAction* Action, TSubclassOf<UGameplayAbility> AbilityClass)override;
 
 	/* This function came from IAbilityInputBinding interface,
 	 * provided by GameFeatures_ExtraActions plugin to manage ability bindings */

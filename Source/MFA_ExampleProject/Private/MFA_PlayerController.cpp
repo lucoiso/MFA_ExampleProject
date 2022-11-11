@@ -45,6 +45,21 @@ void AMFA_PlayerController::SetupAbilityBindingByInput_Implementation(UInputActi
 	}
 }
 
+void AMFA_PlayerController::SetupAbilityBindingBySpec_Implementation([[maybe_unused]] UInputAction* Action, [[maybe_unused]] const FGameplayAbilitySpec& AbilitySpec)
+{
+	UE_LOG(LogTemp, Warning, TEXT("%s: This project is using Input ID to bind abilities. Change it in Project Settings -> Modular Features: Extra Actions -> Ability Binding Mode"), *FString(__func__));
+}
+
+void AMFA_PlayerController::SetupAbilityBindingByTags_Implementation([[maybe_unused]] UInputAction* Action, [[maybe_unused]] const FGameplayTagContainer& AbilityTags)
+{
+	UE_LOG(LogTemp, Warning, TEXT("%s: This project is using Input ID to bind abilities. Change it in Project Settings -> Modular Features: Extra Actions -> Ability Binding Mode"), *FString(__func__));
+}
+
+void AMFA_PlayerController::SetupAbilityBindingByClass_Implementation([[maybe_unused]] UInputAction* Action, [[maybe_unused]] TSubclassOf<UGameplayAbility> AbilityClass)
+{
+	UE_LOG(LogTemp, Warning, TEXT("%s: This project is using Input ID to bind abilities. Change it in Project Settings -> Modular Features: Extra Actions -> Ability Binding Mode"), *FString(__func__));
+}
+
 /* This function came from IAbilityInputBinding interface,
  * provided by GameFeatures_ExtraActions plugin to manage ability bindings */
 void AMFA_PlayerController::RemoveAbilityInputBinding_Implementation(const UInputAction* Action)
