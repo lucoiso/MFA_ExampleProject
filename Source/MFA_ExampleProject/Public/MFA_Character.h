@@ -7,8 +7,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
+#include "InputActionValue.h"
 #include "MFA_Character.generated.h"
 
+class UInputAction;
 class USpringArmComponent;
 class UCameraComponent;
 class UAbilitySystemComponent;
@@ -25,6 +27,8 @@ class MFA_EXAMPLEPROJECT_API AMFA_Character : public ACharacter, public IAbility
 	TObjectPtr<UCameraComponent> FollowCamera;
 
 protected:
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 	// Called on server when the player is possessed by a controller
 	virtual void PossessedBy(AController* InController) override;
 
@@ -47,6 +51,15 @@ protected:
 
 private:
 	TWeakObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
+
+#pragma region Default Movimentation Functions
+	UFUNCTION()
+		void ChangeCameraAxis(const FInputActionValue& Value);
+	UFUNCTION()
+		void Move(const FInputActionValue& Value);
+	UFUNCTION()
+		void PerformJump(const FInputActionValue& Value);
+#pragma endregion Default Movimentation Functions
 
 public:
 	/* Returns character associated Ability System Component */
