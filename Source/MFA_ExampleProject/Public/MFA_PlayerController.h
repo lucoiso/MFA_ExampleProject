@@ -6,7 +6,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "AbilityInputBinding.h"
+#include "Interfaces/MFEA_AbilityInputBinding.h"
 #include "InputActionValue.h"
 #include "MFA_PlayerController.generated.h"
 
@@ -15,7 +15,7 @@ class UInputAction;
  * 
  */
 UCLASS()
-class MFA_EXAMPLEPROJECT_API AMFA_PlayerController : public APlayerController, public IAbilityInputBinding
+class MFA_EXAMPLEPROJECT_API AMFA_PlayerController : public APlayerController, public IMFEA_AbilityInputBinding
 {
 	GENERATED_BODY()
 
