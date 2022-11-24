@@ -4,6 +4,17 @@
 
 A simple example project for the [Modular Features Extra Actions plugin](https://github.com/lucoiso/UEModularFeatures_ExtraActions).
 
+## Dependencies:
+* Unreal Engine 5.1
+* Modular Features Extra Actions Plugin (Added as submodule)
+
+## Cloning this repository
+```
+git clone https://github.com/lucoiso/MFA_ExampleProject.git
+cd MFA_ExampleProject
+git submodule update --init
+```
+
 ## Links:
 * [Unreal Engine Forum](https://forums.unrealengine.com/t/free-modularfeatures-extraactions-plugin-modular-gas-enhanced-input-and-more/495400)
 * [Plugin Repository](https://github.com/lucoiso/UEModularFeatures_ExtraActions)
