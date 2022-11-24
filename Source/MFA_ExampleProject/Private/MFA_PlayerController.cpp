@@ -73,7 +73,7 @@ void AMFA_PlayerController::RemoveAbilityInputBinding_Implementation(const UInpu
 }
 
 // Function to manage the input bindings of the added abilities when a key is pressed
-void AMFA_PlayerController::OnAbilityInputPressed(UInputAction* Action) const
+void AMFA_PlayerController::OnAbilityInputPressed(UInputAction* Action)
 {
 	if (!IsValid(GetPawn()))
 	{
@@ -107,7 +107,7 @@ void AMFA_PlayerController::OnAbilityInputPressed(UInputAction* Action) const
 }
 
 // Function to manage the input bindings of the added abilities when a key is released
-void AMFA_PlayerController::OnAbilityInputReleased(UInputAction* Action) const
+void AMFA_PlayerController::OnAbilityInputReleased(UInputAction* Action)
 {
 	if (!IsValid(GetPawn()))
 	{

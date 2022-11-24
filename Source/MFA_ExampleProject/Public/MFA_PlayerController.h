@@ -50,8 +50,8 @@ private:
 	TMap<UInputAction*, FAbilityInputData> AbilityActionBindings;
 
 	// Function to manage the input bindings of the added abilities when a key is pressed
-	void OnAbilityInputPressed(UInputAction* Action) const;
+	void OnAbilityInputPressed(UInputAction* Action);
 
 	// Function to manage the input bindings of the added abilities when a key is released
-	void OnAbilityInputReleased(UInputAction* Action) const;
+	void OnAbilityInputReleased(UInputAction* Action);
 };
