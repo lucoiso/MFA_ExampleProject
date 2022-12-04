@@ -11,5 +11,6 @@ public class MFA_ExampleProjectTarget : TargetRules
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
 		ExtraModuleNames.AddRange(new[] { "MFA_ExampleProject" });
+		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 	}
 }

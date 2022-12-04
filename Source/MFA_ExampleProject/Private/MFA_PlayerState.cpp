@@ -3,7 +3,7 @@
 // Repo: https://github.com/lucoiso/MFA_ExampleProject
 
 #include "MFA_PlayerState.h"
-#include "AbilitySystemComponent.h"
+#include <AbilitySystemComponent.h>
 
 // Constructor: Sets default values for this controller's properties
 AMFA_PlayerState::AMFA_PlayerState()

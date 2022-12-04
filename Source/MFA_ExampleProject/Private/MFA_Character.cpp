@@ -4,13 +4,13 @@
 
 #include "MFA_Character.h"
 #include "MFA_PlayerState.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "GameFramework/SpringArmComponent.h"
-#include "Camera/CameraComponent.h"
-#include "Components/CapsuleComponent.h"
-#include "Components/GameFrameworkComponentManager.h"
-#include "AbilitySystemComponent.h"
-#include "InputAction.h"
+#include <GameFramework/CharacterMovementComponent.h>
+#include <GameFramework/SpringArmComponent.h>
+#include <Camera/CameraComponent.h>
+#include <Components/CapsuleComponent.h>
+#include <Components/GameFrameworkComponentManager.h>
+#include <AbilitySystemComponent.h>
+#include <InputAction.h>
 
 // Default variable used on camera rotation
 constexpr float BaseTurnRate = 45.f;
@@ -83,7 +83,7 @@ void AMFA_Character::PossessedBy(AController* InController)
 	if (InController->IsPlayerController())
 	{
 		// Initialize the ability system component that is stored by Player State
-		if (AMFA_PlayerState* State = GetPlayerState<AMFA_PlayerState>())
+		if (AMFA_PlayerState* const State = GetPlayerState<AMFA_PlayerState>())
 		{
 			AbilitySystemComponent = State->GetAbilitySystemComponent();
 			AbilitySystemComponent->InitAbilityActorInfo(State, this);
@@ -106,7 +106,7 @@ void AMFA_Character::OnRep_PlayerState()
 	Super::OnRep_PlayerState();
 
 	// Initialize the ability system component that is stored by Player State
-	if (AMFA_PlayerState* State = GetPlayerState<AMFA_PlayerState>())
+	if (AMFA_PlayerState* const State = GetPlayerState<AMFA_PlayerState>())
 	{
 		AbilitySystemComponent = State->GetAbilitySystemComponent();
 		AbilitySystemComponent->InitAbilityActorInfo(State, this);
@@ -125,23 +125,31 @@ UAbilitySystemComponent* AMFA_Character::GetAbilitySystemComponent() const
 // Function to manage camera rotation via mouse movement
 void AMFA_Character::ChangeCameraAxis(const FInputActionValue& Value)
 {
-	GetController<APlayerController>()->AddYawInput(-1.f * Value[1] * BaseTurnRate * GetWorld()->GetDeltaSeconds());
-	GetController<APlayerController>()->AddPitchInput(Value[0] * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
+	APlayerController* const PlayerController = GetController<APlayerController>();
+	if (!IsValid(PlayerController))
+	{
+		return;
+	}
+
+	PlayerController->AddYawInput(-1.f * Value[1] * BaseTurnRate * GetWorld()->GetDeltaSeconds());
+	PlayerController->AddPitchInput(Value[0] * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 
 // Function to manage Walk related inputs: W, A, S and D
 void AMFA_Character::Move(const FInputActionValue& Value)
 {
-	if (Value.GetMagnitude() != 0.0f && !IsMoveInputIgnored())
+	if (Value.GetMagnitude() <= 0.0f || IsMoveInputIgnored())
 	{
-		const FRotator YawRotation(0, GetControlRotation().Yaw, 0);
-
-		const FVector DirectionX = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-		const FVector DirectionY = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-
-		AddMovementInput(DirectionX, Value[1]);
-		AddMovementInput(DirectionY, Value[0]);
+		return;
 	}
+	
+	const FRotator YawRotation(0, GetControlRotation().Yaw, 0);
+
+	const FVector DirectionX = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+	const FVector DirectionY = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+
+	AddMovementInput(DirectionX, Value[1]);
+	AddMovementInput(DirectionY, Value[0]);
 }
 
 // There's a modular ability to manage the character's jump,

@@ -4,11 +4,11 @@
 
 #include "MFA_PlayerController.h"
 #include "MFA_Character.h"
-#include "EnhancedInputComponent.h"
-#include "EnhancedPlayerInput.h"
-#include "InputAction.h"
-#include "AbilitySystemComponent.h"
 #include "MFEA_Settings.h"
+#include <EnhancedInputComponent.h>
+#include <EnhancedPlayerInput.h>
+#include <InputAction.h>
+#include <AbilitySystemComponent.h>
 
 // Constructor: Sets default values for this controller's properties
 AMFA_PlayerController::AMFA_PlayerController()
@@ -18,7 +18,7 @@ AMFA_PlayerController::AMFA_PlayerController()
 	PrimaryActorTick.bStartWithTickEnabled = true;
 
 	// Get and store the Blueprint Enumeration with the Ability InputID values
-	if (const UMFEA_Settings* MF_Settings = GetDefault<UMFEA_Settings>();
+	if (const UMFEA_Settings* const MF_Settings = GetDefault<UMFEA_Settings>();
 		!MF_Settings->InputIDEnumeration.IsNull())
 	{
 		InputEnumHandle = MF_Settings->InputIDEnumeration.LoadSynchronous();
@@ -29,7 +29,7 @@ AMFA_PlayerController::AMFA_PlayerController()
  * provided by GameFeatures_ExtraActions plugin to manage ability bindings */
 void AMFA_PlayerController::SetupAbilityBindingByInput_Implementation(UInputAction* Action, const int32 InputID)
 {
-	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
+	if (UEnhancedInputComponent* const EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
 		ensureAlwaysMsgf(IsValid(EnhancedInputComponent), TEXT("%s have a invalid EnhancedInputComponent"), *GetName()))
 	{
 		// FAbilityInputData is a custom private struct to handle the bindings of the input to the ability
@@ -64,7 +64,7 @@ void AMFA_PlayerController::SetupAbilityBindingByClass_Implementation([[maybe_un
  * provided by GameFeatures_ExtraActions plugin to manage ability bindings */
 void AMFA_PlayerController::RemoveAbilityInputBinding_Implementation(const UInputAction* Action)
 {
-	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
+	if (UEnhancedInputComponent* const EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
 		ensureAlwaysMsgf(IsValid(EnhancedInputComponent), TEXT("%s have a invalid EnhancedInputComponent"), *GetName()))
 	{
 		EnhancedInputComponent->RemoveBindingByHandle(AbilityActionBindings.FindRef(Action).OnPressedHandle);
@@ -83,9 +83,8 @@ void AMFA_PlayerController::OnAbilityInputPressed(UInputAction* Action)
 	const uint32 InputID = AbilityActionBindings.FindRef(Action).InputID;
 
 	// Check if controller owner is valid and owns a ability system component
-	if (const AMFA_Character* ControllerOwner = GetPawn<AMFA_Character>();
-		ensureAlwaysMsgf(IsValid(ControllerOwner->GetAbilitySystemComponent()),
-		                 TEXT("%s owner have a invalid AbilitySystemComponent"), *GetName()))
+	if (const AMFA_Character* const ControllerOwner = GetPawn<AMFA_Character>();
+		ensureAlwaysMsgf(IsValid(ControllerOwner->GetAbilitySystemComponent()), TEXT("%s owner have a invalid AbilitySystemComponent"), *GetName()))
 	{
 		// Send the input pressed event to the ability system component with the found input ID
 		ControllerOwner->GetAbilitySystemComponent()->AbilityLocalInputPressed(InputID);
@@ -117,9 +116,8 @@ void AMFA_PlayerController::OnAbilityInputReleased(UInputAction* Action)
 	const uint32 InputID = AbilityActionBindings.FindRef(Action).InputID;
 
 	// Check if controller owner is valid and owns a ability system component
-	if (const AMFA_Character* ControllerOwner = GetPawn<AMFA_Character>();
-		ensureAlwaysMsgf(IsValid(ControllerOwner->GetAbilitySystemComponent()),
-		                 TEXT("%s owner have a invalid AbilitySystemComponent"), *GetName()))
+	if (const AMFA_Character* const ControllerOwner = GetPawn<AMFA_Character>();
+		ensureAlwaysMsgf(IsValid(ControllerOwner->GetAbilitySystemComponent()), TEXT("%s owner have a invalid AbilitySystemComponent"), *GetName()))
 	{
 		// Send the input released event to the ability system component with the found input ID
 		ControllerOwner->GetAbilitySystemComponent()->AbilityLocalInputReleased(InputID);

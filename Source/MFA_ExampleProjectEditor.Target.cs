@@ -11,5 +11,6 @@ public class MFA_ExampleProjectEditorTarget : TargetRules
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
 		ExtraModuleNames.AddRange(new[] { "MFA_ExampleProject" });
+		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 	}
 }

@@ -5,8 +5,7 @@
 #include "MFA_AttributeSet.h"
 
 // Constructor: Sets default values for this controller's properties
-UMFA_AttributeSet::UMFA_AttributeSet()
-	: Stamina(100.f)
+UMFA_AttributeSet::UMFA_AttributeSet() : Stamina(100.f)
 {
 }
 
